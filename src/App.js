@@ -63,8 +63,12 @@ function App() {
           className: "",
           duration: 5000,
           style: {
-            background: "white",
-            color: "#000",
+            background: "wheat",
+            color: "paletvioletred",
+            fontSize: "48px",
+            width: "50vw",
+            height: "50vh",
+            border: "7px palevioletred dashed",
           },
           // Default options for specific types
           success: {
@@ -72,6 +76,9 @@ function App() {
             theme: {
               primary: "green",
               secondary: "green",
+              width: "50vw",
+              height: "50vh",
+              border: "7px palevioletred dashed",
             },
           },
         }}
