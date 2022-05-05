@@ -1,35 +1,77 @@
-import { useState } from 'react';
-import './App.css';
-
+import { useState } from "react";
+import "./App.css";
+import toast, { Toaster } from "react-hot-toast";
+import api from "./services/api";
 
 function App() {
-  const [churros,setChurros] = useState(0)
-  const [name, setName] = useState("")
+  const [churros, setChurros] = useState(0);
+  const [name, setName] = useState("");
 
   const onSubmitChurros = () => {
-    return "Tijubina Produz Churros quentes"
-  }
+    api
+      .post("/churros", {
+        name: name,
+        count: churros,
+      })
+      .then((res) => {
+        console.log(res);
+        toast.success("Wow so easy!");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    setChurros(0);
+    return "Tijubina Produz Churros quentes";
+  };
 
   return (
     <div className="App">
-      <div className='RealSinglePageAplication'>
-        <div className='MasterCentralApp'>
+      <div className="RealSinglePageAplication">
+        <div className="MasterCentralApp">
           <h2>COmpRe AgOr4</h2>
           <h3>M4$ter ChurRu$</h3>
-          <div className='BOXIMPORTANTE'>
-            <input placeholder='Name' onChange={(e)=> setName(e.target.value)}/>
-            <button onClick={()=> setChurros(churros +1)}>
-              +
-            </button>
-            <p>{churros}</p>
-            <button onClick={()=> setChurros(churros -1)}>
-              -
-            </button>
-            <button onClick={()=> onSubmitChurros}>CHURRUS !</button>
+          <div className="BOXIMPORTANTE">
+            <input
+              placeholder="Name"
+              onChange={(e) => setName(e.target.value)}
+            />
+            <div className="middleDiv">
+              <button onClick={() => setChurros(churros + 1)} className="btn">
+                +
+              </button>
+              <p>{churros}</p>
+              <button onClick={() => setChurros(churros - 1)} className="btn">
+                -
+              </button>
+            </div>
+            <button onClick={onSubmitChurros}>CHURROS!</button>
           </div>
-
         </div>
       </div>
+      <Toaster
+        position="bottom-center"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 5000,
+          style: {
+            background: "white",
+            color: "#000",
+          },
+          // Default options for specific types
+          success: {
+            duration: 3000,
+            theme: {
+              primary: "green",
+              secondary: "green",
+            },
+          },
+        }}
+      />
     </div>
   );
 }
