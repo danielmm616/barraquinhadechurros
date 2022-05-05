@@ -15,13 +15,13 @@ function App() {
       })
       .then((res) => {
         console.log(res);
-        toast.success("Wow so easy!");
+        toast.success(res.data.message);
       })
       .catch((err) => {
         console.log(err);
       });
     setChurros(0);
-    return "Tijubina Produz Churros quentes";
+    setName("");
   };
 
   return (
@@ -33,6 +33,7 @@ function App() {
           <div className="BOXIMPORTANTE">
             <input
               placeholder="Name"
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
             <div className="middleDiv">
@@ -49,7 +50,7 @@ function App() {
         </div>
       </div>
       <Toaster
-        position="bottom-center"
+        position="top-center"
         reverseOrder={false}
         gutter={8}
         containerClassName=""
@@ -64,7 +65,7 @@ function App() {
           },
           // Default options for specific types
           success: {
-            duration: 3000,
+            duration: 6000,
             theme: {
               primary: "green",
               secondary: "green",

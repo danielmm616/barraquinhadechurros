@@ -22,12 +22,12 @@ def churros_controller():
     if count < 0:
         message = f'{name} comprou {abs(count)} churros'
     if count == 0:
-        message = f'{name} não comprou nenhum churros :('
+        message = f'{name} sem churros pra você :('
     if count > 10:
-        message = f'{name} comprou muitos churros e ficou com dor de barriga...'
-    if count < -10:
         message = f'{name} produziu muitos churros e ficou cansado...'
-    
+    if count < -10:
+        message = f'{name} comprou muitos churros e ficou com dor de barriga...'
+        
     return {'message': message}
 
 
