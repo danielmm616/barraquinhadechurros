@@ -1,4 +1,5 @@
 from flask import Flask, request, Blueprint
+from flask_cors import CORS
 
 
 # models
@@ -39,6 +40,7 @@ bp_churros.post('')(churros_controller)
 def create_app():
     app = Flask(__name__)
     
+    CORS(app)
     app.register_blueprint(bp_churros)
     
     return app
