@@ -1,11 +1,14 @@
 import { useState } from "react";
 import "./App.css";
 import toast, { Toaster } from "react-hot-toast";
-import api from "./services/api";
+import axios from "axios";
 
 function App() {
   const [churros, setChurros] = useState(0);
   const [name, setName] = useState("");
+  const api = axios.create({
+    baseURL: "http://127.0.0.1:5000/",
+  });
 
   const onSubmitChurros = () => {
     api
